@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Kayıt Sayfası</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:outputText value="İsim Soyisim Giriniz:"/>
+                <h:inputText id="nameAndSurname" value="#{registerBean.nameAndSurname}" 
+                             required="true" requiredMessage="İsim Soyisim Alanı Zorunludur!"/>
+                <h:message for="nameAndSurname" style="color:red"/>
+                
+                <h:outputText value="E-Posta Adresi Giriniz:"/>
+                <h:inputText id="email" value="#{registerBean.email}" validatorMessage="Geçersiz E-posta Adresi Girdiniz"
+                             required="true" requiredMessage="E-Posta Alanı Zorunludur!">
+                    <f:validateRegex pattern="^[A-Za-z0-9-+]+(\.[A-Za-z0-9+-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$"/>
+                </h:inputText>
+                <h:message for="email" style="color:red"/>
+            </h:panelGrid>
+            <h:commandButton value="Kayıt Ol" actionListener="#{registerBean.registerUser}" action="resultPage.xhtml?faces-redirect=true"/>
+        </h:form>
+    </h:body>
+</html>
+
